@@ -19,7 +19,7 @@ function App() {
         const result = await response.json();
         setData(result);
       } catch (err) {
-        const errorMessage = "Failed to fetch data. Please try again later."; 
+        const errorMessage = "Failed to fetch data"; 
         setError(errorMessage);
         alert(errorMessage); 
       }
