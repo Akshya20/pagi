@@ -7,16 +7,27 @@ function App() {
   const [currentpage, setcurrentpage] = useState(1);
   const itemperpage = 10;
 
-  useEffect(() => {
+   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
-      );
-      const result = await response.json();
-      setdata(result);
+      try {
+        const response = await fetch(
+          "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        const errorMessage = "Failed to fetch data. Please try again later."; 
+        setError(errorMessage);
+        alert(errorMessage); 
+      }
     };
-    fetchData()
-  }, [])
+
+    fetchData();
+  }, []);
+
 
   let Indexoflastitem = currentpage * itemperpage;
   let Indexoffirstitem = Indexoflastitem - itemperpage;
