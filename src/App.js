@@ -17,7 +17,7 @@ function App() {
           throw new Error("Failed to fetch data");
         }
         const result = await response.json();
-        setData(result);
+        setdata(result);
       } catch (err) {
         const errorMessage = "Failed to fetch data"; 
         alert(errorMessage); 
