@@ -20,7 +20,6 @@ function App() {
         setData(result);
       } catch (err) {
         const errorMessage = "Failed to fetch data"; 
-        setError(errorMessage);
         alert(errorMessage); 
       }
     };
